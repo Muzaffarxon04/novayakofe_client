@@ -1,0 +1,214 @@
+.working {
+  padding: 50px 0;
+  overflow: hidden;
+  &__top-title {
+    @include top-title;
+    text-align: center;
+
+    &::before {
+      display: none;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+  }
+
+  &__row {
+    padding-bottom: 60px;
+  }
+
+  &__col {
+    padding-left: 40px;
+    position: relative;
+    max-width: 580px;
+    max-width: 651px;
+  }
+
+  &__title {
+    @include title;
+    max-width: 821px;
+    margin: 0 auto 75px auto;
+    width: 100%;
+  }
+
+  &__carousel-indicators {
+    position: static;
+    margin-left: 0;
+    margin-right: 0;
+    margin-bottom: 0;
+  }
+
+  &__texts {
+    transform: rotate(-90deg);
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+
+  &__texts--before {
+    left: -75px;
+    top: 72px;
+  }
+
+  &__texts--after {
+    left: -93px;
+    top: 95px;
+  }
+
+  &__desc {
+    font-size: 24px;
+    line-height: 29px;
+    text-transform: capitalize;
+    color: $color-primary;
+    @include d-flex;
+
+    &::after {
+      content: "";
+      display: inline-block;
+      width: 120px;
+      height: 1px;
+      background: #000;
+      margin-left: 20px;
+    }
+  }
+
+  &__img {
+    width: 531px;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  &__btns-box button {
+    @include d-flex;
+    justify-content: center;
+    border: none;
+    background: none;
+  }
+
+  &__left-btn {
+    @include slider-btn;
+    margin-right: 60px;
+  }
+
+  &__img-box {
+    height: 100%;
+  }
+  &__round-btn {
+    width: 0 !important;
+    height: 0 !important;
+    display: block;
+    padding: 3px !important;
+    background: #c4c4c4 !important;
+    border-radius: 50%;
+    margin: 0 20px 0 0 !important;
+    position: relative;
+    border: none !important;
+
+    &::before {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      content: "";
+      width: 20px;
+      height: 20px;
+      background: transparent;
+      border: 1px solid #c4c4c4;
+      border-radius: 50%;
+      opacity: 0;
+    }
+  }
+
+  & .active::before {
+    opacity: 1;
+  }
+
+  &__right-btn {
+    @include slider-btn;
+    margin-left: 60px;
+  }
+
+  &__round-btn--margin {
+    margin-right: 0 !important;
+  }
+}
+
+@media screen and (max-width: 1300px) {
+  .working__col {
+    width: 400px;
+    height: 500px;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .working__col {
+    width: 300px;
+    height: 400px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .working__col {
+    width: 250px;
+    height: 350px;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .working__col {
+    width: 205px;
+    height: 250px;
+    padding-left: 0;
+  }
+
+  .working {
+    padding: 50px 0;
+    overflow: hidden;
+    &__top-title {
+      font-size: 24px;
+      font-weight: 700;
+      line-height: 36px;
+    }
+
+    &__title {
+      width: 90%;
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 22px;
+    }
+  }
+  .working__texts {
+    position: static;
+    transform: rotate(0);
+  }
+
+  .working__desc {
+    font-size: 18px;
+
+    &::after {
+      width: 70px;
+    }
+  }
+}
+
+@media screen and (max-width: 460px) {
+  .working__col {
+    width: 155px;
+    height: 203px;
+  }
+
+  .working__left-btn {
+    margin-right: 20px;
+  }
+
+  .working__right-btn {
+    margin-left: 20px;
+  }
+}
+
+@media screen and (max-width: 360px) {
+  .working__col {
+    width: 125px;
+    height: 180px;
+    padding-left: 0;
+  }
+}

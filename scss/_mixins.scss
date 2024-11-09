@@ -1,0 +1,112 @@
+@mixin cssretina {
+  @media only screen and (-webkit-min-device-pixel-ratio: 2),
+    only screen and (min--moz-device-pixel-ratio: 2),
+    only screen and (-o-min-device-pixel-ratio: 2/1),
+    only screen and (min-device-pixel-ratio: 2),
+    only screen and (min-resolution: 192dpi),
+    only screen and (min-resolution: 2dppx) {
+    @content;
+  }
+}
+
+@mixin breakpoint-down($size) {
+  @media only screen and (max-width: $size) {
+    @content;
+  }
+}
+
+@mixin breakpoint-up($size) {
+  @media only screen and (min-width: $size) {
+    @content;
+  }
+}
+
+@mixin breakpoint-between($min, $max) {
+  @media only screen and (min-width: $min) and (max-width: $max) {
+    @content;
+  }
+}
+
+@mixin list-unstyled {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+@mixin title {
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 26px;
+  text-align: center;
+  width: 546px;
+}
+
+@mixin subtitle {
+  font-weight: 600;
+  font-size: 30px;
+  line-height: 46px;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+@mixin hover-active {
+  transition: all 0.4s ease;
+  &:hover {
+    color: #2fd3fc !important;
+  }
+
+  &:active {
+    color: #43c8e9 !important;
+  }
+}
+
+@mixin contents-desc {
+  font-size: 20px;
+  line-height: 24px;
+  text-transform: capitalize;
+  color: $color-primary;
+}
+
+@mixin d-flex {
+  display: flex;
+  align-items: center;
+}
+
+@mixin top-title {
+  font-family: "Poppins", sans-serif;
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 60px;
+  margin-bottom: 10px;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: #c4c4c4;
+    width: 100px;
+    height: 2px;
+  }
+}
+
+@mixin about-title {
+  max-width: 751px;
+  font-weight: 600;
+  font-size: 36px;
+  line-height: 48px;
+  text-align: center;
+  color: $color-primary;
+}
+
+@mixin slider-btn {
+  font-size: 25px;
+  color: $color-primary;
+  transition: color 0.4s ease;
+  background: none;
+  border: none;
+
+  &:hover {
+    color: #9d9b9d;
+  }
+}

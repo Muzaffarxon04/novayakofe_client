@@ -1,0 +1,236 @@
+.services__card {
+  padding: 30px 30px 50px 30px;
+  height: 402px;
+  width: 310px;
+  border-radius: 8px;
+  border: 1px solid #f4f4f4;
+  margin-right: 13px;
+  margin-bottom: 30px;
+  text-align: center;
+  &:hover {
+    -webkit-box-shadow: 0px 5px 7px 2px rgba(34, 60, 80, 0.2);
+    -moz-box-shadow: 0px 5px 7px 2px rgba(34, 60, 80, 0.2);
+    box-shadow: 0px 5px 7px 2px rgba(34, 60, 80, 0.2);
+  }
+
+  &:nth-child(4n) {
+    margin-right: 0;
+  }
+
+  &:nth-child(5),
+  &:nth-child(6) {
+    .card__title {
+      width: 150px;
+      &::before {
+        left: 15px;
+      }
+    }
+  }
+  .card__title {
+    margin: 20px auto 0 auto;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 26px;
+    width: 190px;
+    position: relative;
+
+    &::before {
+      position: absolute;
+      left: 35px;
+      bottom: -8px;
+      content: "";
+      height: 1px;
+      width: 120px;
+      background-color: #444245;
+    }
+  }
+}
+
+.card__img {
+  margin: 0 auto;
+  width: 250px;
+  height: 250px;
+  object-fit: cover;
+}
+
+.process__card {
+  display: flex;
+  // align-items: flex-start;
+  flex-direction: row;
+  padding: 60px 44px 10px 30px;
+  height: 225px;
+  width: 400px;
+  border-radius: 8px;
+  border: 1px solid #f4f4f4;
+  margin: 0 40px 40px 0;
+  &:hover {
+    -webkit-box-shadow: 0px 5px 7px 2px rgba(34, 60, 80, 0.2);
+    -moz-box-shadow: 0px 5px 7px 2px rgba(34, 60, 80, 0.2);
+    box-shadow: 0px 5px 7px 2px rgba(34, 60, 80, 0.2);
+  }
+
+  .card__number-wrapper {
+    display: flex;
+    margin-top: 70px;
+    margin-right: 20px;
+    width: 40px;
+    height: 40px;
+    transform: rotate(-90deg);
+    .card__number {
+      font-size: 28px;
+      position: relative;
+      &::before {
+        content: "";
+        width: 60px;
+        height: 2px;
+        background: #444245;
+        position: absolute;
+        left: 50px;
+        top: 50%;
+      }
+    }
+  }
+
+  &:nth-child(3n) {
+    margin-right: 0;
+  }
+
+  .text-wrapper {
+    width: 100%;
+  }
+
+  .card__title {
+    margin: 0 auto;
+    width: 100%;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 32px;
+    text-align: left;
+  }
+}
+
+@include breakpoint-between(993px, 1304px) {
+  .services__card-wrapper {
+    justify-content: space-between;
+  }
+
+  .services__card {
+    width: 32%;
+    margin: 0;
+    margin-bottom: 20px;
+  }
+  .process__card {
+    width: 30%;
+    height: inherit;
+  }
+}
+
+@include breakpoint-between(850px, 993px) {
+  .services__card {
+    width: 31%;
+    margin-right: 20px;
+
+    &:nth-child(3n) {
+      margin-right: 0;
+    }
+    &:nth-child(4n) {
+      margin-right: 20px;
+    }
+  }
+}
+
+@include breakpoint-between(700px, 993px) {
+  .process__card {
+    width: 48%;
+    margin: 0 20px 20px 0;
+    &:nth-child(3) {
+      margin-right: 20px;
+    }
+
+    &:nth-child(2n) {
+      margin-right: 0;
+    }
+  }
+}
+@include breakpoint-down(850px) {
+  .services__card {
+    width: 45%;
+    margin-left: 10px;
+  }
+}
+
+@include breakpoint-down(700px) {
+  .process__card {
+    width: 100%;
+    margin-right: 0;
+  }
+}
+
+@include breakpoint-down(500px) {
+  .services__card {
+    width: 48.5%;
+    height: 227px;
+    margin: 0 10px 20px 0;
+
+    &:nth-child(2n) {
+      margin-right: 0;
+    }
+    .card__img {
+      width: 122px;
+      height: 121px;
+    }
+
+    .card__title {
+      width: 100%;
+      font-size: 12px;
+      line-height: 18px;
+
+      &::before {
+        left: 15px;
+        width: 80px;
+      }
+    }
+  }
+
+  .process__card {
+    height: 155px;
+    margin-bottom: 20px;
+    padding: 30px 20px 38px 23px;
+    .card__title {
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 24px;
+      width: 80%;
+      text-align: left;
+      margin: 0;
+    }
+    .card__number-wrapper {
+      margin-top: 50px;
+    }
+    .card__number {
+      font-size: 20px !important;
+      font-weight: 400;
+      line-height: 26px;
+      &::before {
+        height: 1px !important;
+        width: 50px !important;
+        left: 35px !important;
+        top: 33% !important;
+      }
+    }
+  }
+}
+
+@include breakpoint-down(370px) {
+  .services__card {
+    width: 100%;
+    position: relative;
+    margin-right: 0;
+
+    .card__title {
+      &::before {
+        left: 32% !important;
+      }
+    }
+  }
+}

@@ -1,0 +1,80 @@
+
+  .reviews{
+    .container{
+        padding-top: 100px;
+    }
+    &__title{
+        padding-bottom: 25px;
+        text-align: center;
+        font-weight: bold;
+    }
+  }
+  .reviews-container {
+    display: flex;
+    gap: 20px;
+    padding: 20px;
+
+  }
+  
+  .review-card {
+    width: 33%;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 15px;
+    padding: 25px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    transition: transform 0.3s, box-shadow 0.3s;
+  
+    &:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .image-box{
+        display: flex;
+        align-items: center;
+        gap: 30px;
+      }
+      
+  }
+  
+  .review-image {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #007bff;
+  }
+  
+  .review-content {
+    display: flex;
+    flex-direction: column;
+  }
+
+
+  .review-name {
+    margin: 0;
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+  }
+
+  .review-rating {
+    margin: 8px 0;
+    display: flex;
+    gap: 5px;
+  
+    .star {
+      font-size: 20px;
+      color: #FFD700; /* Yulduzlar oltin rangda */
+    }
+  }
+  
+  .review-text {
+    margin: 8px 0 0;
+    font-size: 14px;
+    color: #666;
+  }
+  

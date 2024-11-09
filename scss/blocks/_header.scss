@@ -1,0 +1,22 @@
+.header {
+  height: 772px;
+  color: #ffffff;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center top;
+  background-image: url("../../img/kofe.jpeg");
+
+  .header__conainer {
+    background-color: red !important;
+    align-items: baseline;
+  }
+}
+
+@include breakpoint-down(500px) {
+  .header {
+    height: 577px;
+    background-position: left center;
+    background-size: cover;
+    background-image: url("../../img/kofe.jpeg");
+  }
+}

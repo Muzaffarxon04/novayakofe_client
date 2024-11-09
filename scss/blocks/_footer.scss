@@ -1,0 +1,123 @@
+.footer {
+  padding: 60px 0;
+}
+
+.footer__menu {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.footer__item {
+  display: flex;
+  flex-direction: column;
+}
+
+.footer__link {
+  opacity: 80%;
+  padding-left: 30px;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  color: #444245;
+  margin-top: 20px;
+  position: relative;
+
+  &::before {
+    content: "";
+    position: absolute;
+    height: 24px;
+    width: 24px;
+    top: 0;
+    left: 0;
+    background: url("../../img/ph_telegram-logo.svg") no-repeat center;
+    background-size: cover;
+  }
+
+  &:nth-child(3) {
+    &::before {
+      background-image: url("../../img/instagram.svg");
+    }
+  }
+  &:nth-child(4) {
+    &::before {
+      background-image: url("../../img/facebook.svg");
+    }
+  }
+}
+.footer__contact {
+  .footer__link {
+    opacity: 80%;
+    &::before {
+      background-image: url("../../img/phone.svg");
+    }
+    &:nth-child(3) {
+      &::before {
+        background-image: url("../../img/mail.svg");
+      }
+    }
+    &:nth-child(4) {
+      &::before {
+        background-image: url("../../img/navigation.svg");
+      }
+    }
+  }
+}
+
+.footer__title {
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 24px;
+}
+
+.footer__subtitle {
+  margin-top: 23px;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 20px;
+  color: #5c5a5d;
+  width: 271px;
+}
+
+.footer-item {
+  .footer__link {
+    padding: 0;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 24px;
+    margin-top: 20px;
+    opacity: 100%;
+    &::before {
+      display: none;
+    }
+  }
+}
+
+@include breakpoint-down(500px) {
+  .footer__subtitle {
+    width: 167px;
+    color: #5c5a5d;
+    font-size: 11px;
+    line-height: 20px;
+  }
+  .footer-item {
+    width: 40%;
+  }
+  .footer__item {
+    margin-top: 30px;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 24px;
+  }
+
+  .items {
+    .footer__link {
+      opacity: 80%;
+
+      &::before {
+        opacity: 100%;
+      }
+    }
+  }
+}

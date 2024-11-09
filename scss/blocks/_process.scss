@@ -1,0 +1,48 @@
+.process {
+  text-align: center;
+  padding: 120px 0 110px;
+}
+.process__title {
+  font-size: 40px;
+  font-weight: 700;
+  font-family: "Poppins", sans-serif;
+  line-height: 60px;
+}
+
+.process__subtitle {
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 26px;
+  width: 402px;
+  margin: 10px auto 60px auto;
+}
+
+.process__cards-wrapper {
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+@include breakpoint-down(500px) {
+  .process {
+    padding: 80px 0 70px;
+  }
+  .process__title {
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 36px;
+  }
+
+  .process__subtitle {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 22px;
+    text-align: center;
+    width: 80%;
+    margin-bottom: 40px;
+  }
+
+  .process__cards-wrapper {
+    justify-content: center;
+  }
+}

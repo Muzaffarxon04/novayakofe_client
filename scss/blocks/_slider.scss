@@ -1,0 +1,266 @@
+.slider {
+  display: flex;
+  align-items: center;
+
+  &__wrapper {
+    width: 100% !important;
+    height: 570px;
+    position: relative;
+  }
+
+  &__parent {
+    transition: all 0.4s ease;
+  }
+
+  &__tops-box {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+
+  &__tops {
+    font-size: 24px;
+    text-transform: capitalize;
+    display: flex;
+    align-items: center;
+    font-weight: 400;
+    line-height: 29px;
+
+    &::after {
+      content: "";
+      display: inline-block;
+      width: 120px;
+      height: 1px;
+      background: $color-primary;
+      margin-left: 20px;
+    }
+  }
+
+  &__line {
+    display: inline-block;
+    position: absolute;
+    left: 50%;
+    top: 0;
+    transform: translateX(-50%);
+    height: 100%;
+    width: 3px;
+    background-color: #7ec7ff;
+    z-index: 100;
+    opacity: 0.2;
+
+    &::before {
+      content: "";
+    }
+  }
+
+  &__img {
+    border-radius: 8px;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  &__btns-box {
+    justify-content: center;
+    margin: 40px 0 70px 0;
+  }
+
+  &__top-btn {
+    @include slider-btn;
+    margin-right: 40px;
+  }
+
+  &__round-btn {
+    display: inline-block;
+    padding: 3px !important;
+    background: #c4c4c4 !important;
+    border-radius: 50%;
+    position: relative;
+    border: none !important;
+
+    &:not(:last-child) {
+      margin: 0 20px 0 0 !important;
+    }
+
+    &::before {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      content: "";
+      width: 20px;
+      height: 20px;
+      background: transparent;
+      border: 1px solid #c4c4c4;
+      border-radius: 50%;
+      opacity: 0;
+    }
+  }
+
+  .active {
+    &::before {
+      opacity: 1;
+    }
+  }
+
+  &__down-btn {
+    @include slider-btn;
+    margin-left: 40px;
+  }
+
+  &__item {
+    height: 100%;
+  }
+
+  &__flex {
+    transform: rotate(-90deg);
+    width: 1202px;
+  }
+}
+
+#slider__my-image,
+#slider__my-image2,
+#slider__my-image3,
+#slider__my-image4,
+#slider__my-image5 {
+  clip-path: polygon(0 0, 50% 0, 50% 100%, 0 100%);
+}
+
+#slider,
+#slider2,
+#slider3,
+#slider4,
+#slider5 {
+  border-radius: 8px;
+
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 100%;
+  height: 100%;
+  z-index: 100;
+  background-color: transparent;
+  -webkit-appearance: none;
+  cursor: e-resize;
+}
+
+#slider::-webkit-slider-thumb,
+#slider2::-webkit-slider-thumb,
+#slider3::-webkit-slider-thumb,
+#slider4::-webkit-slider-thumb,
+#slider5::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 70px;
+  height: 600px;
+  background-image: url("../../img/slider-btn.svg");
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+.my__carousel {
+  width: 100% !important;
+  transform: translate(0) !important;
+}
+
+@media screen and (max-width: 992px) {
+  .slider__img {
+    width: 100%;
+    height: 100%;
+  }
+
+  .slider__inner,
+  .slider__wrapper {
+    max-width: 700px;
+    height: 350px;
+    margin: 0 auto;
+    overflow: hidden;
+  }
+
+  .slider {
+    height: 300px !important;
+    top: 43% !important;
+
+    &::-webkit-slider-thumb {
+      background-size: 100% 350px;
+    }
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .slider__img {
+    width: 100%;
+    height: 100%;
+  }
+
+  .slider__inner,
+  .slider__wrapper {
+    height: 240px;
+  }
+
+  .slider {
+    height: 190px !important;
+    top: 40% !important;
+
+    &::-webkit-slider-thumb {
+      background-size: 100% 350px;
+    }
+  }
+
+  .slider__tops {
+    font-size: 11px;
+    line-height: 14px;
+
+    &::after {
+      width: 60px;
+    }
+  }
+
+  .working__title {
+    font-size: 13px;
+    line-height: 18px;
+    margin-bottom: 30px;
+  }
+}
+
+@media screen and (max-width: 490px) {
+  .slider__inner,
+  .slider__wrapper {
+    height: 200px;
+  }
+
+  .working__round-btn {
+    padding: 2px !important;
+
+    &:not(:last-child) {
+      margin-right: 10px;
+    }
+    &::before {
+      width: 12px;
+      height: 12px;
+    }
+  }
+
+  .working__left-btn,
+  .working__right-btn {
+    font-size: 20px;
+  }
+
+  .working__left-btn {
+    padding: 0;
+    margin-right: 24px;
+  }
+
+  .working__right-btn {
+    margin-left: 24px;
+  }
+
+  .slider__tops-box {
+    margin-bottom: 5px;
+  }
+
+  .working__title {
+    font-size: 13px;
+    line-height: 18px;
+    margin-bottom: 30px;
+  }
+}
