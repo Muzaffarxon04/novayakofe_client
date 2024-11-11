@@ -63,7 +63,7 @@ width: 100%;
   /* Toast stil */
   #toast {
     visibility: hidden;
-    max-width: 250px;
+    max-width: 320px;
     width: 100%;
     background-color: rgb(40, 155, 40);
 z-index: 99999999999999;
@@ -89,8 +89,3 @@ z-index: 99999999999999;
 
 }
 
-@include breakpoint-down(500px) {
-  #toast {
-max-width: 320px;
-  }
-}
