@@ -107,6 +107,9 @@
 }
 
 @include breakpoint-down(750px) {
+  .btn-zakaz {
+    margin-top: 30px;
+  }
   .header__phone {
     display: block !important;
   }

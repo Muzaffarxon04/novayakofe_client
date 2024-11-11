@@ -11,6 +11,7 @@
   }
   .reviews-container {
     display: flex;
+   
     gap: 20px;
     padding: 20px;
 
@@ -78,3 +79,20 @@
     color: #666;
   }
   
+  @include breakpoint-down(900px) {
+
+    .reviews-container {
+
+      flex-wrap: wrap;
+    
+  
+    }
+    .review-card {
+      width: 100%;
+      }
+  }
+  @include breakpoint-down(750px) {
+ .review-card {
+width: 100%;
+}
+  }

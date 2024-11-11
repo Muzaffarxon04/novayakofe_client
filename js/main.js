@@ -98,13 +98,13 @@ document.querySelectorAll('.faq .question').forEach((question) => {
 
     // Toast funksiyasi
     function showToast(message) {
-      const toast = document.getElementById("toast");
+      let toast = document.getElementById("toast");
       toast.className = "show";
-      toast.innerText = message;
+      toast.innerText =  message;
       setTimeout(function() { toast.className = toast.className.replace("show", ""); }, 3000);
     }
 
-    const phoneInput = document.getElementById("phone");
+    let phoneInput = document.getElementById("phone");
     phoneInput.value = "+998 ";
     
     phoneInput.addEventListener("input", function (e) {
@@ -144,8 +144,7 @@ document.querySelectorAll('.faq .question').forEach((question) => {
     document.getElementById('telegramForm').addEventListener('submit', function (e) {
       e.preventDefault();
 
-      const name = document.getElementById('name').value;
-      const phone = document.getElementById('phone').value;
+
 
       // if (!validatePhone(phone)) {
       //   showToast("Telefon raqami noto‘g‘ri formatda kiritilgan! To'g'ri format: +998 (90) 123-45-67");
@@ -165,16 +164,18 @@ document.querySelectorAll('.faq .question').forEach((question) => {
       .then(response => response.json())
       .then(data => {
         showToast("Telefon raqami noto‘g‘ri formatda kiritilgan! To'g'ri format: +998 (90) 123-45-67");
+   
 
         if (data.ok) {
           showToast("Zayavka muvaffaqiyatli yuborildi!");
           document.getElementById('telegramForm').reset();
+            phoneInput.value = "+998 ";
         } else {
           showToast("Zayavka yuborishda xatolik yuz berdi.");
         }
       })
       .catch(error => {
-        console.error("Xatolik:", error);
+        console.error("Xatolik:", error.message);
         showToast("Zayavka yuborishda xatolik yuz berdi.");
       });
     });
