@@ -104,6 +104,7 @@ document.querySelectorAll('.faq .question').forEach((question) => {
       setTimeout(function() { toast.className = toast.className.replace("show", ""); }, 3000);
     }
 
+    let nameInput = document.getElementById("name");
     let phoneInput = document.getElementById("phone");
     phoneInput.value = "+998 ";
     
@@ -151,7 +152,7 @@ document.querySelectorAll('.faq .question').forEach((question) => {
       //   return;
       // }
 
-      const message = `Ism: ${name}\nTelefon: ${phone}`;
+      const message = `Ism: ${nameInput?.value}\nTelefon: ${phoneInput?.value}`;
       
       fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
         method: 'POST',
