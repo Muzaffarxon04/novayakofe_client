@@ -63,7 +63,7 @@ width: 100%;
   /* Toast stil */
   #toast {
     visibility: hidden;
-    min-width: 250px;
+    max-width: 250px;
     width: 100%;
     background-color: rgb(40, 155, 40);
 z-index: 99999999999999;
