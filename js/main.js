@@ -94,7 +94,7 @@ document.querySelectorAll('.faq .question').forEach((question) => {
 
 
   const botToken = '7803746265:AAGK7Gz86PijJKYCTV7Yx3VXOCc0iGXh1zY';
-    const chatId = '-4505297847';
+    const chatId = '-1002316778057';
 
     // Toast funksiyasi
     function showToast(message) {
