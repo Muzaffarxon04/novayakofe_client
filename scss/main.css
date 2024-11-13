@@ -2033,8 +2033,7 @@ img {
 }
 .aplication #toast {
   visibility: hidden;
-  max-width: 250px;
-  width: 100%;
+  max-width: 320px;
   background-color: rgb(40, 155, 40);
   z-index: 99999999999999;
   color: #fff;
