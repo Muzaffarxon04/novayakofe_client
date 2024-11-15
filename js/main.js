@@ -164,19 +164,19 @@ document.querySelectorAll('.faq .question').forEach((question) => {
       })
       .then(response => response.json())
       .then(data => {
-        showToast("Telefon raqami noto‘g‘ri formatda kiritilgan! To'g'ri format: +998 (90) 123-45-67");
+        // showToast("Telefon raqami noto‘g‘ri formatda kiritilgan! To'g'ri format: +998 (90) 123-45-67");
    
 
         if (data.ok) {
-          showToast("Zayavka muvaffaqiyatli yuborildi!");
+          showToast("Arizangiz muvaffaqiyatli yuborildi!");
           document.getElementById('telegramForm').reset();
             phoneInput.value = "+998 ";
         } else {
-          showToast("Zayavka yuborishda xatolik yuz berdi.");
+          showToast("Ariza yuborishda xatolik yuz berdi.");
         }
       })
       .catch(error => {
         console.error("Xatolik:", error.message);
-        showToast("Zayavka yuborishda xatolik yuz berdi.");
+        showToast("Ariza yuborishda xatolik yuz berdi.");
       });
     });

@@ -506,7 +506,7 @@ img {
   background-image: url("../../img/instagram.svg");
 }
 .footer__link:nth-child(4)::before {
-  background-image: url("../../img/facebook.svg");
+  background-image: url("../../img/youtube.svg");
 }
 
 .footer__contact .footer__link {
@@ -516,7 +516,7 @@ img {
   background-image: url("../../img/phone.svg");
 }
 .footer__contact .footer__link:nth-child(3)::before {
-  background-image: url("../../img/mail.svg");
+  background-image: url("../../img/ph_telegram-logo.svg");
 }
 .footer__contact .footer__link:nth-child(4)::before {
   background-image: url("../../img/navigation.svg");
