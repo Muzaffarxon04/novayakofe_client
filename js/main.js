@@ -152,7 +152,7 @@ document.querySelectorAll('.faq .question').forEach((question) => {
       //   return;
       // }
 
-      const message = `Ism: ${nameInput?.value}\nTelefon: ${phoneInput?.value}`;
+      const message = `Ism: ${nameInput?.value}\nTelefon: ${phoneInput?.value?.toString()?.split(" ").join("")}`;
       
       fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
         method: 'POST',
