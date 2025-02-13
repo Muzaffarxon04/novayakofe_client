@@ -180,3 +180,5 @@ document.querySelectorAll('.faq .question').forEach((question) => {
         showToast("Ariza yuborishda xatolik yuz berdi.");
       });
     });
+
+
