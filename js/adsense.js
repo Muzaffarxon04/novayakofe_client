@@ -95,6 +95,19 @@ function _initAd(slotId, containerId, options) {
       (window.adsbygoogle = window.adsbygoogle || []).push({});
       console.log(`AdSense: ✅ Ad pushed to adsbygoogle for slot "${slotId}"`);
       console.log(`AdSense: ⏳ Ads may take a few seconds to appear...`);
+      
+      // Check if ad element was created successfully
+      const createdAd = container.querySelector('.adsbygoogle');
+      if (createdAd) {
+        console.log(`AdSense: ✅ Ad element created successfully in container "${containerId}"`);
+        console.log(`AdSense: 📊 Ad attributes:`, {
+          'data-ad-client': createdAd.getAttribute('data-ad-client'),
+          'data-ad-slot': createdAd.getAttribute('data-ad-slot'),
+          'data-ad-format': createdAd.getAttribute('data-ad-format')
+        });
+      } else {
+        console.warn(`AdSense: ⚠️ Ad element not found in container "${containerId}"`);
+      }
     } catch (error) {
       console.error('AdSense: ❌ Error pushing ad to adsbygoogle:', error);
     }
@@ -177,15 +190,56 @@ function _initAllAds() {
   }
 }
 
+// Check if AdSense script is loaded
+function checkAdSenseScript() {
+  const scripts = document.querySelectorAll('script[src*="adsbygoogle"]');
+  if (scripts.length === 0) {
+    console.error('AdSense: ❌ AdSense script not found in HTML!');
+    console.error('AdSense: Please check if the script tag is in the <head> section.');
+    return false;
+  }
+  console.log(`AdSense: ✅ Found ${scripts.length} AdSense script(s)`);
+  return true;
+}
+
 // Auto-initialize ads when script loads (if page is ready)
 if (document.readyState === 'complete' || document.readyState === 'interactive') {
-  // Small delay to ensure everything is ready
-  setTimeout(_initAllAds, 100);
+  // Check script first
+  if (checkAdSenseScript()) {
+    // Small delay to ensure everything is ready
+    setTimeout(() => {
+      console.log('AdSense: 🚀 Starting ad initialization...');
+      _initAllAds();
+    }, 500);
+  }
 } else {
   document.addEventListener('DOMContentLoaded', () => {
-    setTimeout(_initAllAds, 100);
+    if (checkAdSenseScript()) {
+      setTimeout(() => {
+        console.log('AdSense: 🚀 Starting ad initialization...');
+        _initAllAds();
+      }, 500);
+    }
   });
 }
+
+// Also try after page fully loads
+window.addEventListener('load', () => {
+  setTimeout(() => {
+    if (window.adsbygoogle && window.adsbygoogle.loaded === undefined) {
+      console.log('AdSense: 🔄 Page fully loaded, checking ads again...');
+      // Re-check ads after page load
+      const adElements = document.querySelectorAll('.adsbygoogle[data-ad-slot]');
+      if (adElements.length > 0) {
+        console.log(`AdSense: Found ${adElements.length} ad element(s) on page`);
+        adElements.forEach((ad, index) => {
+          const slotId = ad.getAttribute('data-ad-slot');
+          console.log(`AdSense: Ad ${index + 1} - Slot: ${slotId}, Visible: ${ad.offsetParent !== null}`);
+        });
+      }
+    }
+  }, 2000);
+});
 
 // Export functions for manual use if needed
 window.AdSense = {
