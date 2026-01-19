@@ -50,10 +50,20 @@ function _initAd(slotId, containerId, options) {
     }
 
     // Check if adsbygoogle is available
-    if (typeof (adsbygoogle = window.adsbygoogle) === 'undefined') {
+    if (typeof window.adsbygoogle === 'undefined') {
       console.warn('AdSense: adsbygoogle script not loaded yet');
       // Retry after a short delay
       setTimeout(() => _initAd(slotId, containerId, options), 500);
+      return;
+    }
+    
+    // Check if slot ID is valid (not a placeholder)
+    if (!slotId || slotId.includes('YOUR_SLOT_ID') || slotId.includes('1234567890') || slotId.length < 8) {
+      console.warn(`AdSense: Invalid or placeholder slot ID "${slotId}". Please replace with your actual AdSense ad unit ID.`);
+      // Hide the container if slot ID is not set
+      if (container.parentElement) {
+        container.parentElement.style.display = 'none';
+      }
       return;
     }
 
@@ -76,7 +86,8 @@ function _initAd(slotId, containerId, options) {
 
     // Push to adsbygoogle array
     try {
-      (adsbygoogle = window.adsbygoogle || []).push({});
+      (window.adsbygoogle = window.adsbygoogle || []).push({});
+      console.log(`AdSense: Ad initialized for slot "${slotId}" in container "${containerId}"`);
     } catch (error) {
       console.error('AdSense: Error pushing ad to adsbygoogle:', error);
     }
@@ -118,13 +129,22 @@ function _initAllAds() {
   // Find all ad containers and initialize them
   const adContainers = document.querySelectorAll('[data-adsense-slot]');
   
-  adContainers.forEach(container => {
+  if (adContainers.length === 0) {
+    console.warn('AdSense: No ad containers found with data-adsense-slot attribute');
+    return;
+  }
+  
+  console.log(`AdSense: Found ${adContainers.length} ad container(s)`);
+  
+  adContainers.forEach((container, index) => {
     const slotId = container.getAttribute('data-adsense-slot');
-    const containerId = container.id || `adsense-${Math.random().toString(36).substr(2, 9)}`;
+    const containerId = container.id || `adsense-${index}`;
     
     if (!container.id) {
       container.id = containerId;
     }
+    
+    console.log(`AdSense: Initializing ad ${index + 1} - Slot ID: "${slotId}", Container: "${containerId}"`);
     
     initAdSenseAd(slotId, containerId, {
       format: container.getAttribute('data-adsense-format') || 'auto',
