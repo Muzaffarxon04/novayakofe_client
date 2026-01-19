@@ -59,11 +59,17 @@ function _initAd(slotId, containerId, options) {
     
     // Check if slot ID is valid (not a placeholder)
     if (!slotId || slotId.includes('YOUR_SLOT_ID') || slotId.includes('1234567890') || slotId.length < 8) {
-      console.warn(`AdSense: Invalid or placeholder slot ID "${slotId}". Please replace with your actual AdSense ad unit ID.`);
-      // Hide the container if slot ID is not set
+      console.warn(`AdSense: ❌ Invalid or placeholder slot ID "${slotId}". Please replace with your actual AdSense ad unit ID.`);
+      console.warn(`AdSense: Container "${containerId}" will be hidden.`);
+      // Hide the container and its parent if slot ID is not set
       if (container.parentElement) {
         container.parentElement.style.display = 'none';
+        container.parentElement.style.visibility = 'hidden';
+        container.parentElement.style.height = '0';
+        container.parentElement.style.margin = '0';
+        container.parentElement.style.padding = '0';
       }
+      container.style.display = 'none';
       return;
     }
 
@@ -87,9 +93,10 @@ function _initAd(slotId, containerId, options) {
     // Push to adsbygoogle array
     try {
       (window.adsbygoogle = window.adsbygoogle || []).push({});
-      console.log(`AdSense: Ad initialized for slot "${slotId}" in container "${containerId}"`);
+      console.log(`AdSense: ✅ Ad pushed to adsbygoogle for slot "${slotId}"`);
+      console.log(`AdSense: ⏳ Ads may take a few seconds to appear...`);
     } catch (error) {
-      console.error('AdSense: Error pushing ad to adsbygoogle:', error);
+      console.error('AdSense: ❌ Error pushing ad to adsbygoogle:', error);
     }
 
   } catch (error) {
@@ -134,7 +141,9 @@ function _initAllAds() {
     return;
   }
   
-  console.log(`AdSense: Found ${adContainers.length} ad container(s)`);
+  console.log(`AdSense: ✅ Found ${adContainers.length} ad container(s)`);
+  
+  let validAdsCount = 0;
   
   adContainers.forEach((container, index) => {
     const slotId = container.getAttribute('data-adsense-slot');
@@ -144,13 +153,28 @@ function _initAllAds() {
       container.id = containerId;
     }
     
-    console.log(`AdSense: Initializing ad ${index + 1} - Slot ID: "${slotId}", Container: "${containerId}"`);
+    // Check if slot ID is placeholder
+    if (slotId && (slotId.includes('YOUR_SLOT_ID') || slotId.includes('1234567890') || slotId.length < 8)) {
+      console.warn(`AdSense: ⚠️ Ad ${index + 1} - Placeholder slot ID detected: "${slotId}"`);
+      console.warn(`AdSense: 📝 To fix: Replace "${slotId}" with your actual AdSense ad unit ID in index.html`);
+      return; // Skip this ad
+    }
+    
+    console.log(`AdSense: 🚀 Initializing ad ${index + 1} - Slot ID: "${slotId}", Container: "${containerId}"`);
+    validAdsCount++;
     
     initAdSenseAd(slotId, containerId, {
       format: container.getAttribute('data-adsense-format') || 'auto',
       fullWidthResponsive: container.getAttribute('data-full-width-responsive') !== 'false'
     });
   });
+  
+  if (validAdsCount === 0) {
+    console.error('AdSense: ❌ No valid ads found! All slot IDs are placeholders.');
+    console.error('AdSense: 📖 Please read ADSENSE_FIX.md for setup instructions.');
+  } else {
+    console.log(`AdSense: ✅ Successfully initialized ${validAdsCount} ad(s)`);
+  }
 }
 
 // Auto-initialize ads when script loads (if page is ready)
